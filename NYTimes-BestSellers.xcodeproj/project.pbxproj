@@ -60,10 +60,10 @@
 		D8387D78288B50E900315EFE /* NYTimes-BestSellers */ = {
 			isa = PBXGroup;
 			children = (
+				D84B1EB0288B62010020D2FB /* View */,
 				D8387D8D288B516500315EFE /* Model */,
 				D8387D79288B50E900315EFE /* AppDelegate.swift */,
 				D8387D7B288B50E900315EFE /* SceneDelegate.swift */,
-				D8387D7D288B50E900315EFE /* ViewController.swift */,
 				D8387D7F288B50E900315EFE /* Main.storyboard */,
 				D8387D82288B50EB00315EFE /* Assets.xcassets */,
 				D8387D84288B50EB00315EFE /* LaunchScreen.storyboard */,
@@ -79,6 +79,14 @@
 				D84B1EAE288B5D470020D2FB /* APIManager.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D84B1EB0288B62010020D2FB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D8387D7D288B50E900315EFE /* ViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
