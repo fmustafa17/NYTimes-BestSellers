@@ -15,6 +15,7 @@
 		D8387D86288B50EB00315EFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8387D84288B50EB00315EFE /* LaunchScreen.storyboard */; };
 		D84B1EAD288B585A0020D2FB /* BookListResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84B1EAC288B585A0020D2FB /* BookListResults.swift */; };
 		D84B1EAF288B5D470020D2FB /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84B1EAE288B5D470020D2FB /* APIManager.swift */; };
+		D84B1EB3288B626B0020D2FB /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84B1EB2288B626B0020D2FB /* BookViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		D8387D87288B50EB00315EFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D84B1EAC288B585A0020D2FB /* BookListResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListResults.swift; sourceTree = "<group>"; };
 		D84B1EAE288B5D470020D2FB /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		D84B1EB2288B626B0020D2FB /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		D8387D78288B50E900315EFE /* NYTimes-BestSellers */ = {
 			isa = PBXGroup;
 			children = (
+				D84B1EB1288B625C0020D2FB /* ViewModel */,
 				D84B1EB0288B62010020D2FB /* View */,
 				D8387D8D288B516500315EFE /* Model */,
 				D8387D79288B50E900315EFE /* AppDelegate.swift */,
@@ -87,6 +90,14 @@
 				D8387D7D288B50E900315EFE /* ViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		D84B1EB1288B625C0020D2FB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D84B1EB2288B626B0020D2FB /* BookViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +176,7 @@
 				D84B1EAF288B5D470020D2FB /* APIManager.swift in Sources */,
 				D84B1EAD288B585A0020D2FB /* BookListResults.swift in Sources */,
 				D8387D7C288B50E900315EFE /* SceneDelegate.swift in Sources */,
+				D84B1EB3288B626B0020D2FB /* BookViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
