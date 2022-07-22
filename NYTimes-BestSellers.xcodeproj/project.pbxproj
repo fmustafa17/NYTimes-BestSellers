@@ -13,8 +13,8 @@
 		D8387D81288B50E900315EFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8387D7F288B50E900315EFE /* Main.storyboard */; };
 		D8387D83288B50EB00315EFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8387D82288B50EB00315EFE /* Assets.xcassets */; };
 		D8387D86288B50EB00315EFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8387D84288B50EB00315EFE /* LaunchScreen.storyboard */; };
-		D8387D8F288B517400315EFE /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8387D8E288B517400315EFE /* APIManager.swift */; };
 		D84B1EAD288B585A0020D2FB /* BookListResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84B1EAC288B585A0020D2FB /* BookListResults.swift */; };
+		D84B1EAF288B5D470020D2FB /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84B1EAE288B5D470020D2FB /* APIManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +26,8 @@
 		D8387D82288B50EB00315EFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8387D85288B50EB00315EFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D8387D87288B50EB00315EFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D8387D8E288B517400315EFE /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		D84B1EAC288B585A0020D2FB /* BookListResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListResults.swift; sourceTree = "<group>"; };
+		D84B1EAE288B5D470020D2FB /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,8 +75,8 @@
 		D8387D8D288B516500315EFE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D8387D8E288B517400315EFE /* APIManager.swift */,
 				D84B1EAC288B585A0020D2FB /* BookListResults.swift */,
+				D84B1EAE288B5D470020D2FB /* APIManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -152,9 +152,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8387D8F288B517400315EFE /* APIManager.swift in Sources */,
 				D8387D7E288B50E900315EFE /* ViewController.swift in Sources */,
 				D8387D7A288B50E900315EFE /* AppDelegate.swift in Sources */,
+				D84B1EAF288B5D470020D2FB /* APIManager.swift in Sources */,
 				D84B1EAD288B585A0020D2FB /* BookListResults.swift in Sources */,
 				D8387D7C288B50E900315EFE /* SceneDelegate.swift in Sources */,
 			);
