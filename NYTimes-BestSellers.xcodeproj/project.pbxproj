@@ -16,6 +16,8 @@
 		D84B1EAD288B585A0020D2FB /* BookListResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84B1EAC288B585A0020D2FB /* BookListResults.swift */; };
 		D84B1EAF288B5D470020D2FB /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84B1EAE288B5D470020D2FB /* APIManager.swift */; };
 		D84B1EB3288B626B0020D2FB /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84B1EB2288B626B0020D2FB /* BookViewModel.swift */; };
+		D84B1EB5288B62D60020D2FB /* BookListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84B1EB4288B62D60020D2FB /* BookListTableViewCell.swift */; };
+		D88AD777288CE1DA00155E8F /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88AD776288CE1DA00155E8F /* Config.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		D84B1EAC288B585A0020D2FB /* BookListResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListResults.swift; sourceTree = "<group>"; };
 		D84B1EAE288B5D470020D2FB /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		D84B1EB2288B626B0020D2FB /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
+		D84B1EB4288B62D60020D2FB /* BookListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListTableViewCell.swift; sourceTree = "<group>"; };
+		D88AD776288CE1DA00155E8F /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,7 @@
 			children = (
 				D84B1EAC288B585A0020D2FB /* BookListResults.swift */,
 				D84B1EAE288B5D470020D2FB /* APIManager.swift */,
+				D88AD776288CE1DA00155E8F /* Config.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -88,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				D8387D7D288B50E900315EFE /* ViewController.swift */,
+				D84B1EB4288B62D60020D2FB /* BookListTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -176,7 +182,9 @@
 				D84B1EAF288B5D470020D2FB /* APIManager.swift in Sources */,
 				D84B1EAD288B585A0020D2FB /* BookListResults.swift in Sources */,
 				D8387D7C288B50E900315EFE /* SceneDelegate.swift in Sources */,
+				D88AD777288CE1DA00155E8F /* Config.swift in Sources */,
 				D84B1EB3288B626B0020D2FB /* BookViewModel.swift in Sources */,
+				D84B1EB5288B62D60020D2FB /* BookListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +331,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UHD7B5C666;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "NYTimes-BestSellers/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -350,6 +359,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UHD7B5C666;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "NYTimes-BestSellers/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
