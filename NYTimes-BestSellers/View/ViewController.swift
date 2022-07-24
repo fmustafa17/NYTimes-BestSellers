@@ -48,7 +48,8 @@ class ViewController: UITableViewController {
 // MARK: - UITableViewDataSource
 extension ViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.bookViewModel.booksResults.count
+        //return self.bookViewModel.booksResults.count
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -56,8 +57,10 @@ extension ViewController {
             print("Couldn't dequeue BookListTableViewCell")
             return UITableViewCell()
         }
-        //cell.updateData(with: self.viewModel.movies[indexPath.row])
-        cell.categoryTitleLabel.text = self.bookViewModel.booksResults[indexPath.row].title
+        cell.updateUI(with: self.bookViewModel.booksResults, on: indexPath.row)
+        
+//        cell.bookResultsData = self.bookViewModel.booksResults // pass the data to the tableViewCell in order to show the info in the collectionView
+//        cell.categoryTitleLabel.text = self.bookViewModel.booksResults[indexPath.row].title
         return cell
     }
 }
