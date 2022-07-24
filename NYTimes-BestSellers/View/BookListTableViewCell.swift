@@ -9,31 +9,20 @@ import UIKit
 
 class BookListTableViewCell: UITableViewCell {
     static let reuseIdentifer = "BookListTableViewCell"
-    
-//    var bookResultsData: [Book]? = {
-//
-//    }
-    
+
     var bookResultsData: [Book]?
     
     // Collection view flow layout
     var collectionViewFlowLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-//        layout.sectionInset = UIEdgeInsets(top: 10,
-//                                           left: 10,
-//                                           bottom: 10,
-//                                           right: 10)
-        layout.estimatedItemSize = CGSize(width: 100, height: 100)
+        layout.sectionInset = UIEdgeInsets(top: 10,
+                                           left: 10,
+                                           bottom: 10,
+                                           right: 10)
         return layout
     }()
-    
-    /// Add a collection view to enable horizontal scrolling within each BookListTableViewCell
-    //    var collectionView: UICollectionView = {
-    //        let collectionView = UICollectionView(frame: contentView.frame,
-    //                                              collectionViewLayout: collectionViewFlowLayout)
-    //        return collectionView
-    //    }()
+
     var collectionView: UICollectionView!
     
     lazy var categoryTitleLabel: UILabel = {
@@ -47,7 +36,6 @@ class BookListTableViewCell: UITableViewCell {
     override init (style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-//        self.contentView.addSubview(categoryTitleLabel)
         setUpCollectionView()
         
 //        categoryTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
@@ -75,11 +63,7 @@ class BookListTableViewCell: UITableViewCell {
         collectionView.isScrollEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
 
-        
         collectionView.backgroundColor = .blue
-        
-//        self.contentView.addSubview(collectionView)
-//        contentView.isUserInteractionEnabled = false
         
         self.addSubview(collectionView)
         contentView.isUserInteractionEnabled = false
@@ -136,12 +120,18 @@ extension BookListTableViewCell: UICollectionViewDataSource {
         return collectionViewCell
     }
     
-    
 }
 
 // MARK: - UICollectionViewDelegate
 extension BookListTableViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.row)
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+extension BookListTableViewCell: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 8
     }
 }
