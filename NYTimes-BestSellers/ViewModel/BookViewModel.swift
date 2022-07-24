@@ -10,8 +10,7 @@ import Foundation
 
 class BookViewModel: ObservableObject {
     private var apiManager: APIManager!
-//    @Published var books: BookListResults!
-    @Published var booksResults: [Book] = []
+    @Published var booksResults: BookListResults? = nil
     
     init() {
         self.apiManager = APIManager()
@@ -22,7 +21,7 @@ class BookViewModel: ObservableObject {
         
         apiManager?.fetchBookListResults(with: category,
         successHandler: { [weak self] (books) in
-            self?.booksResults = books.results.books
+            self?.booksResults = books
         }, errorHandler: { (error) in
             print(error)
         })

@@ -59,7 +59,11 @@ extension ViewController {
             print("Couldn't dequeue BookListTableViewCell")
             return UITableViewCell()
         }
-        cell.updateUI(with: self.bookViewModel.booksResults, on: indexPath.row)
+        
+        if let bookData = self.bookViewModel.booksResults {
+            cell.updateUI(with: bookData, on: indexPath.row)
+        }
+        
         
 //        cell.bookResultsData = self.bookViewModel.booksResults // pass the data to the tableViewCell in order to show the info in the collectionView
 //        cell.categoryTitleLabel.text = self.bookViewModel.booksResults[indexPath.row].title

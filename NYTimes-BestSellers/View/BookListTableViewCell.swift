@@ -10,7 +10,7 @@ import UIKit
 class BookListTableViewCell: UITableViewCell {
     static let reuseIdentifer = "BookListTableViewCell"
     
-    var bookResultsData: [Book]?
+    var bookResultsData: BookListResults?
     
     // Collection view flow layout
     var collectionViewFlowLayout: UICollectionViewFlowLayout = {
@@ -36,11 +36,13 @@ class BookListTableViewCell: UITableViewCell {
     override init (style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        self.contentView.addSubview(categoryTitleLabel)
+        categoryTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
+        categoryTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
+        categoryTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
+        
         setUpCollectionView()
         
-        //        categoryTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
-        //        categoryTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
-        //        categoryTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
         
         //        categoryTitleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         
@@ -69,7 +71,7 @@ class BookListTableViewCell: UITableViewCell {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        collectionView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        collectionView.topAnchor.constraint(equalTo: categoryTitleLabel.bottomAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
     }
     
@@ -79,15 +81,16 @@ class BookListTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func updateUI(with bookResults: [Book], on index: Int) {
+//    func updateUI(with bookResults: [Book], on index: Int) {
+    func updateUI(with bookResults: BookListResults, on index: Int) {
         self.bookResultsData = bookResults
-        //        self.categoryTitleLabel.text = bookResults[index].title
+        self.categoryTitleLabel.text = bookResultsData?.results.listName
         self.collectionView.reloadData()
 //        self.collectionView.layoutIfNeeded()
     }
     
     func assignImage(to collectionViewCell: BookCollectionViewCell, on index: Int) {
-        let urlString = bookResultsData?[index].bookImage ?? ""
+        let urlString = bookResultsData?.results.books[index].bookImage ?? ""
         
         let url = URL(string: urlString)
         
@@ -111,7 +114,7 @@ class BookListTableViewCell: UITableViewCell {
 // MARK: - UICollectionViewDataSource
 extension BookListTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return bookResultsData?.count ?? 0
+        return bookResultsData?.results.books.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
