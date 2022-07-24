@@ -35,21 +35,15 @@ class BookListTableViewCell: UITableViewCell {
     
     override init (style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+        setUpCategoryTitleLabel()
+        setUpCollectionView()
+    }
+    
+    func setUpCategoryTitleLabel() {
         self.contentView.addSubview(categoryTitleLabel)
         categoryTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
         categoryTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
         categoryTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
-        
-        setUpCollectionView()
-        
-        
-        //        categoryTitleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        
-        //        collectionView.topAnchor.constraint(equalTo: categoryTitleLabel.bottomAnchor).isActive = true
-        //        collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        //        collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        //        collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
     }
     
     func setUpCollectionView() {
@@ -74,14 +68,7 @@ class BookListTableViewCell: UITableViewCell {
         collectionView.topAnchor.constraint(equalTo: categoryTitleLabel.bottomAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
     }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
-//    func updateUI(with bookResults: [Book], on index: Int) {
+
     func updateUI(with bookResults: BookListResults, on index: Int) {
         self.bookResultsData = bookResults
         self.categoryTitleLabel.text = bookResultsData?.results.listName
@@ -100,6 +87,12 @@ class BookListTableViewCell: UITableViewCell {
                 collectionViewCell.bookCoverImageView.image = UIImage(data: data!)
             }
         }
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
     }
     
     override func awakeFromNib() {
