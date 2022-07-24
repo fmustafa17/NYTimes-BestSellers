@@ -16,7 +16,7 @@ struct APIManager {
                               successHandler: @escaping (BookListResults) -> Void,
                               errorHandler: @escaping (Error) -> Void) {
         let baseURL = "https://api.nytimes.com/svc/books/v3/lists/current/"
-        let apiKey = Config.apiKey
+        let apiKey = Config.apiKey.rawValue
         let fullURLString = baseURL + category + ".json?api-key=" + apiKey
         
         guard let url = URL(string: fullURLString) else {
