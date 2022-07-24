@@ -9,7 +9,7 @@ import UIKit
 
 class BookListTableViewCell: UITableViewCell {
     static let reuseIdentifer = "BookListTableViewCell"
-
+    
     var bookResultsData: [Book]?
     
     // Collection view flow layout
@@ -22,7 +22,7 @@ class BookListTableViewCell: UITableViewCell {
                                            right: 10)
         return layout
     }()
-
+    
     var collectionView: UICollectionView!
     
     lazy var categoryTitleLabel: UILabel = {
@@ -38,20 +38,20 @@ class BookListTableViewCell: UITableViewCell {
         
         setUpCollectionView()
         
-//        categoryTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
-//        categoryTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
-//        categoryTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
+        //        categoryTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
+        //        categoryTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
+        //        categoryTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
         
         //        categoryTitleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         
-//        collectionView.topAnchor.constraint(equalTo: categoryTitleLabel.bottomAnchor).isActive = true
-//        collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-//        collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-//        collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        //        collectionView.topAnchor.constraint(equalTo: categoryTitleLabel.bottomAnchor).isActive = true
+        //        collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        //        collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        //        collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
     }
     
     func setUpCollectionView() {
-        collectionView = UICollectionView(frame: self.bounds,
+        collectionView = UICollectionView(frame: self.frame,
                                           collectionViewLayout: collectionViewFlowLayout)
         
         collectionView.dataSource = self
@@ -62,13 +62,13 @@ class BookListTableViewCell: UITableViewCell {
         
         collectionView.isScrollEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
-
+        
         collectionView.backgroundColor = .blue
         
         self.addSubview(collectionView)
         contentView.isUserInteractionEnabled = false
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
@@ -77,15 +77,16 @@ class BookListTableViewCell: UITableViewCell {
     
     func updateUI(with bookResults: [Book], on index: Int) {
         self.bookResultsData = bookResults
-//        self.categoryTitleLabel.text = bookResults[index].title
-        collectionView.reloadData()
+        //        self.categoryTitleLabel.text = bookResults[index].title
+        self.collectionView.reloadData()
+//        self.collectionView.layoutIfNeeded()
     }
     
     func assignImage(to collectionViewCell: BookCollectionViewCell, on index: Int) {
         let urlString = bookResultsData?[index].bookImage ?? ""
         
         let url = URL(string: urlString)
-
+        
         DispatchQueue.global().async {
             let data = try? Data(contentsOf: url!)
             DispatchQueue.main.async {
@@ -134,4 +135,8 @@ extension BookListTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 8
     }
+
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: 100, height: 100)
+//    }
 }

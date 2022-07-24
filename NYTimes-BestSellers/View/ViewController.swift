@@ -26,8 +26,10 @@ class ViewController: UITableViewController {
                                 forCellReuseIdentifier: BookListTableViewCell.reuseIdentifer)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 200.0
+//        tableView.rowHeight = UITableView.automaticDimension
+//        tableView.estimatedRowHeight = 200.0
+        
+        tableView.rowHeight = 100.0
     }
     
     /// Fetch the data and publish the event
