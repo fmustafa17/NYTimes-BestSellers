@@ -29,7 +29,7 @@ class ViewController: UITableViewController {
 //        tableView.rowHeight = UITableView.automaticDimension
 //        tableView.estimatedRowHeight = 200.0
         
-        tableView.rowHeight = 100.0
+        tableView.rowHeight = 250.0
     }
     
     /// Fetch the data and publish the event

@@ -51,7 +51,7 @@ class BookListTableViewCell: UITableViewCell {
     }
     
     func setUpCollectionView() {
-        collectionView = UICollectionView(frame: self.frame,
+        collectionView = UICollectionView(frame: self.contentView.frame,
                                           collectionViewLayout: collectionViewFlowLayout)
         
         collectionView.dataSource = self
@@ -65,8 +65,12 @@ class BookListTableViewCell: UITableViewCell {
         
         collectionView.backgroundColor = .blue
         
-        self.addSubview(collectionView)
-        contentView.isUserInteractionEnabled = false
+        self.contentView.addSubview(collectionView)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        collectionView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -132,11 +136,7 @@ extension BookListTableViewCell: UICollectionViewDelegate {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension BookListTableViewCell: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 180, height: 200)
     }
-
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: 100, height: 100)
-//    }
 }
