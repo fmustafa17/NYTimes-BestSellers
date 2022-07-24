@@ -44,29 +44,11 @@ class BookListTableViewCell: UITableViewCell {
         return label
     }()
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        
-//        collectionView.dataSource = self
-//        collectionView.delegate = self
-//
-//        collectionView.register(BookCollectionViewCell.self,
-//                                forCellWithReuseIdentifier: BookCollectionViewCell.reuseIdentifer)
-//        collectionView.showsHorizontalScrollIndicator = false
-
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override init (style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
 //        self.contentView.addSubview(categoryTitleLabel)
         setUpCollectionView()
-//        self.selectionStyle = .none
         
 //        categoryTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
 //        categoryTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
@@ -84,23 +66,25 @@ class BookListTableViewCell: UITableViewCell {
         collectionView = UICollectionView(frame: self.bounds,
                                           collectionViewLayout: collectionViewFlowLayout)
         
-        collectionView.isScrollEnabled = true
-        collectionView.showsHorizontalScrollIndicator = false
-        
         collectionView.dataSource = self
         collectionView.delegate = self
         
         collectionView.register(BookCollectionViewCell.self,
                                 forCellWithReuseIdentifier: BookCollectionViewCell.reuseIdentifer)
         
+        collectionView.isScrollEnabled = true
+        collectionView.showsHorizontalScrollIndicator = false
+
+        
+        collectionView.backgroundColor = .blue
+        
+//        self.contentView.addSubview(collectionView)
+//        contentView.isUserInteractionEnabled = false
         
         self.addSubview(collectionView)
-        collectionView.backgroundColor = .blue
         contentView.isUserInteractionEnabled = false
-
     }
-    
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
@@ -126,6 +110,13 @@ class BookListTableViewCell: UITableViewCell {
         }
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 // MARK: - UICollectionViewDataSource
