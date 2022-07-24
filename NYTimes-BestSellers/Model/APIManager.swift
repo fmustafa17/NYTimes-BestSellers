@@ -12,6 +12,7 @@ struct APIManager {
         return JSONDecoder()
     }()
     
+    // TODO: Add new func to switch categories
     func fetchBookListResults(with category: String,
                               successHandler: @escaping (BookListResults) -> Void,
                               errorHandler: @escaping (Error) -> Void) {
