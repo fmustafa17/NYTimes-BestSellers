@@ -17,7 +17,7 @@ class BookViewModel: ObservableObject {
     }
     
     func fetchBookData() {
-        let category = "graphic-books-and-manga"
+        let category = BookCategory.allCases.randomElement()?.rawValue ?? "manga"
         
         apiManager?.fetchBookListResults(with: category,
         successHandler: { [weak self] (books) in
