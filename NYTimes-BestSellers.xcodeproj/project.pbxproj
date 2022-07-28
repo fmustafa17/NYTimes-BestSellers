@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D8323FD8288DFD5C00D6DB63 /* BookCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8323FD7288DFD5C00D6DB63 /* BookCategory.swift */; };
 		D8387D7A288B50E900315EFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8387D79288B50E900315EFE /* AppDelegate.swift */; };
 		D8387D7C288B50E900315EFE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8387D7B288B50E900315EFE /* SceneDelegate.swift */; };
 		D8387D7E288B50E900315EFE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8387D7D288B50E900315EFE /* ViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D8323FD7288DFD5C00D6DB63 /* BookCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCategory.swift; sourceTree = "<group>"; };
 		D8387D76288B50E900315EFE /* NYTimes-BestSellers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NYTimes-BestSellers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8387D79288B50E900315EFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8387D7B288B50E900315EFE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				D84B1EAC288B585A0020D2FB /* BookListResults.swift */,
 				D84B1EAE288B5D470020D2FB /* APIManager.swift */,
 				D88AD776288CE1DA00155E8F /* Config.swift */,
+				D8323FD7288DFD5C00D6DB63 /* BookCategory.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 				D88AD779288CEF3700155E8F /* BookCollectionViewCell.swift in Sources */,
 				D84B1EAD288B585A0020D2FB /* BookListResults.swift in Sources */,
 				D8387D7C288B50E900315EFE /* SceneDelegate.swift in Sources */,
+				D8323FD8288DFD5C00D6DB63 /* BookCategory.swift in Sources */,
 				D88AD777288CE1DA00155E8F /* Config.swift in Sources */,
 				D84B1EB3288B626B0020D2FB /* BookViewModel.swift in Sources */,
 				D84B1EB5288B62D60020D2FB /* BookListTableViewCell.swift in Sources */,
