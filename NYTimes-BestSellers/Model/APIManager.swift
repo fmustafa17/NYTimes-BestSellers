@@ -8,11 +8,7 @@
 import Foundation
 
 struct APIManager {
-    static let jsonDecoder: JSONDecoder = {
-        return JSONDecoder()
-    }()
-    
-    // TODO: Add new func to switch categories
+
     func fetchBookListResults(with category: String,
                               successHandler: @escaping (BookListResults) -> Void,
                               errorHandler: @escaping (Error) -> Void) {
@@ -27,6 +23,8 @@ struct APIManager {
         
         let request = URLRequest(url: url)
         
+        let jsonDecoder = JSONDecoder()
+        
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard error == nil else {
                 print("Error encounted:", error?.localizedDescription ?? "")
@@ -39,7 +37,7 @@ struct APIManager {
             }
             
             do {
-                let bookListResults = try APIManager.jsonDecoder.decode(BookListResults.self,
+                let bookListResults = try jsonDecoder.decode(BookListResults.self,
                                                                         from: data)
                 successHandler(bookListResults)
             } catch {
