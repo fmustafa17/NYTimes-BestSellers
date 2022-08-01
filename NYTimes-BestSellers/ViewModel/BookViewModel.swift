@@ -9,8 +9,8 @@ import Combine
 import Foundation
 
 class BookViewModel: ObservableObject {
-    private var apiManager: APIManager!
-    @Published var booksResults: BookListResults? = nil
+    private var apiManager: APIManager
+    @Published var booksResults: BookListResults?
     
     init() {
         self.apiManager = APIManager()
@@ -19,7 +19,7 @@ class BookViewModel: ObservableObject {
     func fetchBookData() {
         let category = BookCategory.allCases.randomElement()?.rawValue ?? "manga"
         
-        apiManager?.fetchBookListResults(with: category,
+        apiManager.fetchBookListResults(with: category,
         successHandler: { [weak self] (books) in
             self?.booksResults = books
         }, errorHandler: { (error) in
