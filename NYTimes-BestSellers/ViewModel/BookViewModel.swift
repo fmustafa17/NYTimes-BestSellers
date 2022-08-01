@@ -54,8 +54,7 @@ class BookViewModel: ObservableObject {
                                                              from: data)
                 successHandler(bookListResults)
             } catch {
-                print("Response:", response!)
-                print(error)
+                errorHandler(error)
             }
         }
         task.resume()
