@@ -15,7 +15,7 @@ class BookViewModel: ObservableObject {
         let category = BookCategory.allCases.randomElement()?.rawValue ?? "manga"
         
         self.fetchBookListResults(with: category,
-        successHandler: { [weak self] (books) in
+                                  successHandler: { [weak self] (books) in
             self?.booksResults = books
         }, errorHandler: { (error) in
             print(error)
@@ -23,8 +23,8 @@ class BookViewModel: ObservableObject {
     }
     
     private func fetchBookListResults(with category: String,
-                              successHandler: @escaping (BookListResults) -> Void,
-                              errorHandler: @escaping (Error) -> Void) {
+                                      successHandler: @escaping (BookListResults) -> Void,
+                                      errorHandler: @escaping (Error) -> Void) {
         let baseURL = "https://api.nytimes.com/svc/books/v3/lists/current/"
         let apiKey = Config.apiKey.rawValue
         let fullURLString = baseURL + category + ".json?api-key=" + apiKey
@@ -51,7 +51,7 @@ class BookViewModel: ObservableObject {
             
             do {
                 let bookListResults = try jsonDecoder.decode(BookListResults.self,
-                                                                        from: data)
+                                                             from: data)
                 successHandler(bookListResults)
             } catch {
                 print("Response:", response!)
