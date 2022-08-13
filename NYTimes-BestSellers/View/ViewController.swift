@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UITableViewController {
     var bookViewModel: BookViewModel!
+    var books: BookListResults!
     
     private var cancellables: Set<AnyCancellable> = []
     
@@ -18,18 +19,16 @@ class ViewController: UITableViewController {
         bookViewModel = BookViewModel()
         setUpTableView()
         
-        bindViewModel()
+        // Combine
+        // bindViewModel()
+        
+        // Async Await
+        Task {
+            await getBookData()
+        }
     }
-    
-    private func setUpTableView() {
-        tableView.register(BookListTableViewCell.self,
-                           forCellReuseIdentifier: BookListTableViewCell.reuseIdentifer)
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.rowHeight = 250.0
-    }
-    
-    /// Fetch the data and publish the event
+
+    // Combine
     private func bindViewModel() {
         self.bookViewModel.fetchBookData()
         
@@ -40,7 +39,24 @@ class ViewController: UITableViewController {
             }
             .store(in: &cancellables)
     }
-
+    
+    // Async Await
+    func getBookData() async {
+        do {
+            books = try await bookViewModel.fetchBooksWithAsyncAwait()
+            tableView.reloadData()
+        } catch {
+            print("Request failed:", error)
+        }
+    }
+    
+    private func setUpTableView() {
+        tableView.register(BookListTableViewCell.self,
+                           forCellReuseIdentifier: BookListTableViewCell.reuseIdentifer)
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.rowHeight = 250.0
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -55,15 +71,10 @@ extension ViewController {
             return UITableViewCell()
         }
         
-        if let bookData = self.bookViewModel.booksResults {
+        if let bookData = books {
             cell.updateUI(with: bookData, on: indexPath.row)
         }
         
         return cell
     }
-}
-
-// MARK: - UITableViewDelegate
-extension ViewController {
-    
 }

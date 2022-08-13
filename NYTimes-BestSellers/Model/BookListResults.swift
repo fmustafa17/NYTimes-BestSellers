@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BookListResults: Codable {
+struct BookListResults: Decodable {
     let numResults: Int
     let results: Results
 
@@ -17,7 +17,7 @@ struct BookListResults: Codable {
     }
 }
 
-struct Results: Codable {
+struct Results: Decodable {
     let books: [Book]
     let listName: String
     let listNameEncoded: String
@@ -29,7 +29,7 @@ struct Results: Codable {
     }
 }
 
-struct Book: Codable {
+struct Book: Decodable {
     let author: String
     let bookImage: String
     let description: String
