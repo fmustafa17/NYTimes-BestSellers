@@ -10,8 +10,7 @@ import Foundation
 
 class BookViewModel: ObservableObject {
     
-    // Combine
-
+    // MARK: - Combine
     @Published var booksResults: BookListResults?
     
     func fetchBookData() {
@@ -52,7 +51,7 @@ class BookViewModel: ObservableObject {
             
             do {
                 let bookListResults = try JSONDecoder().decode(BookListResults.self,
-                                                             from: data)
+                                                               from: data)
                 successHandler(bookListResults)
             } catch {
                 errorHandler(error)
@@ -61,7 +60,7 @@ class BookViewModel: ObservableObject {
         task.resume()
     }
     
-    // Async Await
+    // MARK: - Async Await
     func fetchBooksWithAsyncAwait() async throws -> BookListResults {
         let category = getRandomBookCategory()
         let baseURL = "https://api.nytimes.com/svc/books/v3/lists/current/"
@@ -76,14 +75,14 @@ class BookViewModel: ObservableObject {
         let (data, _) = try await URLSession.shared.data(from: url)
         
         let bookListResults = try JSONDecoder().decode(BookListResults.self,
-                                                     from: data)
+                                                       from: data)
         return bookListResults
     }
     
     func getRandomBookCategory() -> String {
         return BookCategory.allCases.randomElement()?.rawValue ?? "manga"
     }
- 
+    
     enum NYTimesError: Error {
         case invalidURL
     }
