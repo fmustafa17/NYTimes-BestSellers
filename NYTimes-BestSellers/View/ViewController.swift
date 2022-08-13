@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UITableViewController {
     var bookViewModel: BookViewModel!
+    var books: BookListResults!
     
     private var cancellables: Set<AnyCancellable> = []
     
@@ -18,21 +19,16 @@ class ViewController: UITableViewController {
         bookViewModel = BookViewModel()
         setUpTableView()
         
-        bindViewModel()
-    }
-    
-    private func setUpTableView() {
-        self.tableView.register(BookListTableViewCell.self,
-                                forCellReuseIdentifier: BookListTableViewCell.reuseIdentifer)
-        tableView.dataSource = self
-        tableView.delegate = self
-//        tableView.rowHeight = UITableView.automaticDimension
-//        tableView.estimatedRowHeight = 200.0
+        // Combine
+        // bindViewModel()
         
-        tableView.rowHeight = 250.0
+        // Async Await
+        Task {
+            await getBookData()
+        }
     }
-    
-    /// Fetch the data and publish the event
+
+    // Combine
     private func bindViewModel() {
         self.bookViewModel.fetchBookData()
         
@@ -44,13 +40,28 @@ class ViewController: UITableViewController {
             .store(in: &cancellables)
     }
     
+    // Async Await
+    func getBookData() async {
+        do {
+            books = try await bookViewModel.fetchBooksWithAsyncAwait()
+            tableView.reloadData()
+        } catch {
+            print("Request failed:", error)
+        }
+    }
     
+    private func setUpTableView() {
+        tableView.register(BookListTableViewCell.self,
+                           forCellReuseIdentifier: BookListTableViewCell.reuseIdentifer)
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.rowHeight = 250.0
+    }
 }
 
 // MARK: - UITableViewDataSource
 extension ViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return self.bookViewModel.booksResults.count
         return 1
     }
     
@@ -60,15 +71,10 @@ extension ViewController {
             return UITableViewCell()
         }
         
-        if let bookData = self.bookViewModel.booksResults {
+        if let bookData = books {
             cell.updateUI(with: bookData, on: indexPath.row)
         }
-
+        
         return cell
     }
-}
-
-// MARK: - UITableViewDelegate
-extension ViewController {
-    
 }
