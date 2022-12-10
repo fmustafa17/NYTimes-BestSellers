@@ -59,8 +59,6 @@ class BookListTableViewCell: UITableViewCell {
         collectionView.isScrollEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
         
-        collectionView.backgroundColor = .blue
-        
         self.contentView.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
@@ -126,7 +124,7 @@ extension BookListTableViewCell: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension BookListTableViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
+        
     }
 }
 
