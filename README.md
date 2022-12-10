@@ -19,3 +19,5 @@ enum Config: String {
 ```
 
 # Screenshots
+
+![Simulator Screen Shot - iPhone 14 Pro - 2022-12-10 at 11 26 36](https://user-images.githubusercontent.com/9143014/206872082-29172fda-fee7-4d47-a8bd-78353dec0abf.png)
