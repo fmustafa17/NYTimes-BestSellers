@@ -10,8 +10,10 @@ import UIKit
 class BookListTableViewCell: UITableViewCell {
     static let reuseIdentifer = "BookListTableViewCell"
     
+    // MARK: - Dependencies
     var bookResultsData: BookListResults?
-    
+    weak var bookListViewController: ViewController?
+
     // Collection view flow layout
     var collectionViewFlowLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -125,7 +127,10 @@ extension BookListTableViewCell: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension BookListTableViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        print(indexPath.row)
+        let detailVC = BookDetailsViewController()
+        detailVC.bookDetails = bookResultsData?.results.books[indexPath.row]
+        bookListViewController?.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 
