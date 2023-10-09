@@ -30,6 +30,8 @@ class BookListTableViewCell: UITableViewCell {
         label.numberOfLines = 0
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.preferredFont(forTextStyle: .title1)
+        label.adjustsFontForContentSizeCategory = true
         return label
     }()
     
@@ -71,7 +73,6 @@ class BookListTableViewCell: UITableViewCell {
         self.bookResultsData = bookResults
         self.categoryTitleLabel.text = bookResultsData?.results.listName
         self.collectionView.reloadData()
-//        self.collectionView.layoutIfNeeded()
     }
     
     func assignImage(to collectionViewCell: BookCollectionViewCell, on index: Int) {
