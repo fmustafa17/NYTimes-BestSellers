@@ -16,14 +16,18 @@ class BookDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         view.addSubview(containerStackView)
-        containerStackView.addArrangedSubview(bookCoverImageView)
+        view.addSubview(bookCoverImageView)
         containerStackView.addArrangedSubview(titleLabel)
         containerStackView.addArrangedSubview(authorLabel)
         containerStackView.addArrangedSubview(descriptionLabel)
 
         NSLayoutConstraint.activate([
-            containerStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            containerStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        bookCoverImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        bookCoverImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        containerStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        containerStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+        containerStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+        containerStackView.topAnchor.constraint(equalTo: bookCoverImageView.bottomAnchor, constant: 100),
         ])
         titleLabel.text = bookTitle
         authorLabel.text = bookAuthor
@@ -83,6 +87,10 @@ class BookDetailsViewController: UIViewController {
     
     var bookDescription: String {
         return bookDetails!.description
+    }
+    
+    var bookImageURL: String {
+        return bookDetails!.bookImage
     }
 
 }
