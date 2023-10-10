@@ -130,7 +130,7 @@ extension BookListTableViewCell: UICollectionViewDelegate {
         print(indexPath.row)
         let detailVC = BookDetailsViewController()
         detailVC.bookDetails = bookResultsData?.results.books[indexPath.row]
-        bookListViewController?.navigationController?.pushViewController(detailVC, animated: true)
+        bookListViewController?.navigationController?.pushViewController(detailVC, animated: false)
     }
 }
 
