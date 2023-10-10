@@ -24,11 +24,12 @@ class BookDetailsViewController: UIViewController {
         containerStackView.addArrangedSubview(descriptionLabel)
 
         NSLayoutConstraint.activate([
-        bookCoverImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-        bookCoverImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-        containerStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-        containerStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-        containerStackView.topAnchor.constraint(equalTo: bookCoverImageView.bottomAnchor, constant: 20),
+            bookCoverImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            bookCoverImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            containerStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            containerStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            containerStackView.topAnchor.constraint(equalTo: bookCoverImageView.bottomAnchor, constant: 20),
+            containerStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
         ])
         loadImage(bookImageURL)
         titleLabel.text = bookTitle
