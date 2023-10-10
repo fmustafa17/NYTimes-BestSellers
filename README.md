@@ -18,6 +18,6 @@ enum Config: String {
 }
 ```
 
-# Screenshots
+# Watch the app in action
 
-![Simulator Screen Shot - iPhone 14 Pro - 2022-12-10 at 11 26 36](https://user-images.githubusercontent.com/9143014/206872082-29172fda-fee7-4d47-a8bd-78353dec0abf.png)
+![Simulator Screen Recording - iPhone 15 Pro - 2023-10-09 at 18 38 00](https://github.com/fmustafa17/NYTimes-BestSellers/assets/9143014/ab8481b2-9f06-44bb-b8d4-62f349b7108c)

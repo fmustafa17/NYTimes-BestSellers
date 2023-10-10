@@ -9,11 +9,13 @@ import Combine
 import UIKit
 
 class ViewController: UITableViewController {
+    
+    // MARK: - Dependencies
     var bookViewModel: BookViewModel!
     var books: BookListResults!
-    
     private var cancellables: Set<AnyCancellable> = []
     
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         bookViewModel = BookViewModel()
@@ -28,6 +30,8 @@ class ViewController: UITableViewController {
         }
     }
 
+    // MARK: - Functionality
+
     // Combine
     private func bindViewModel() {
         self.bookViewModel.fetchBookData()
@@ -41,7 +45,7 @@ class ViewController: UITableViewController {
     }
     
     // Async Await
-    func getBookData() async {
+    private func getBookData() async {
         do {
             books = try await bookViewModel.fetchBooksWithAsyncAwait()
             tableView.reloadData()
@@ -72,6 +76,7 @@ extension ViewController {
         }
         
         if let bookData = books {
+            cell.bookListViewController = self
             cell.updateUI(with: bookData, on: indexPath.row)
         }
         

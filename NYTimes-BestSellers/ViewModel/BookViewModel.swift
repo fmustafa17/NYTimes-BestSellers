@@ -14,7 +14,7 @@ class BookViewModel: ObservableObject {
     @Published var booksResults: BookListResults?
     
     func fetchBookData() {
-        let category = getRandomBookCategory()
+        let category = randomBookCategory
         
         self.fetchBookListResults(with: category,
                                   successHandler: { [weak self] (books) in
@@ -62,7 +62,7 @@ class BookViewModel: ObservableObject {
     
     // MARK: - Async Await
     func fetchBooksWithAsyncAwait() async throws -> BookListResults {
-        let category = getRandomBookCategory()
+        let category = randomBookCategory
         let baseURL = "https://api.nytimes.com/svc/books/v3/lists/current/"
         let apiKey = Config.apiKey.rawValue
         let fullURLString = baseURL + category + ".json?api-key=" + apiKey
@@ -79,7 +79,7 @@ class BookViewModel: ObservableObject {
         return bookListResults
     }
     
-    func getRandomBookCategory() -> String {
+    var randomBookCategory: String {
         return BookCategory.allCases.randomElement()?.rawValue ?? "manga"
     }
     

@@ -10,8 +10,10 @@ import UIKit
 class BookListTableViewCell: UITableViewCell {
     static let reuseIdentifer = "BookListTableViewCell"
     
+    // MARK: - Dependencies
     var bookResultsData: BookListResults?
-    
+    weak var bookListViewController: ViewController?
+
     // Collection view flow layout
     var collectionViewFlowLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -30,6 +32,8 @@ class BookListTableViewCell: UITableViewCell {
         label.numberOfLines = 0
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.preferredFont(forTextStyle: .title1)
+        label.adjustsFontForContentSizeCategory = true
         return label
     }()
     
@@ -71,7 +75,6 @@ class BookListTableViewCell: UITableViewCell {
         self.bookResultsData = bookResults
         self.categoryTitleLabel.text = bookResultsData?.results.listName
         self.collectionView.reloadData()
-//        self.collectionView.layoutIfNeeded()
     }
     
     func assignImage(to collectionViewCell: BookCollectionViewCell, on index: Int) {
@@ -124,7 +127,10 @@ extension BookListTableViewCell: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension BookListTableViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        print(indexPath.row)
+        let detailVC = BookDetailsViewController()
+        detailVC.bookDetails = bookResultsData?.results.books[indexPath.row]
+        bookListViewController?.navigationController?.pushViewController(detailVC, animated: false)
     }
 }
 
