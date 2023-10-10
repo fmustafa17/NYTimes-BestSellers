@@ -27,8 +27,9 @@ class BookDetailsViewController: UIViewController {
         containerStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         containerStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
         containerStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-        containerStackView.topAnchor.constraint(equalTo: bookCoverImageView.bottomAnchor, constant: 100),
+        containerStackView.topAnchor.constraint(equalTo: bookCoverImageView.bottomAnchor, constant: 20),
         ])
+        loadImage(bookImageURL)
         titleLabel.text = bookTitle
         authorLabel.text = bookAuthor
         descriptionLabel.text = bookDescription
@@ -37,10 +38,9 @@ class BookDetailsViewController: UIViewController {
     // MARK: - Views
     var bookCoverImageView: UIImageView = {
             let imageView = UIImageView()
-            imageView.image = UIImage(systemName: "pencil")
             imageView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
-            imageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            imageView.widthAnchor.constraint(equalToConstant: 300).isActive = true
+            imageView.heightAnchor.constraint(equalToConstant: 400).isActive = true
             imageView.contentMode = .scaleAspectFit
             return imageView
         }()
@@ -48,6 +48,7 @@ class BookDetailsViewController: UIViewController {
     var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
         label.font = UIFont.preferredFont(forTextStyle: .title1)
         return label
     }()
@@ -92,7 +93,17 @@ class BookDetailsViewController: UIViewController {
     var bookImageURL: String {
         return bookDetails!.bookImage
     }
-
+    
+    func loadImage(_ urlString: String) {
+        let url = URL(string: urlString)
+        
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: url!)
+            DispatchQueue.main.async {
+                self.bookCoverImageView.image = UIImage(data: data!)
+            }
+        }
+    }
 }
 
 // MARK: - Previews
@@ -101,7 +112,10 @@ class BookDetailsViewController: UIViewController {
     let mockBook = Book(
         author: "ONE and Yusuke Murata",
         bookImage: "https://storage.googleapis.com/du-prd/books/images/9781421590158.jpg",
-        description: "Saitama sneaks into a combat tournament in order to hone his martial arts skills.", title: "ONE-PUNCH MAN, VOL. 10", bookImageHeight: 495, bookImageWidth: 330
+        description: "Saitama sneaks into a combat tournament in order to hone his martial arts skills.",
+        title: "ONE-PUNCH MAN, VOL. 10", 
+        bookImageHeight: 495,
+        bookImageWidth: 330
     )
     let vc = BookDetailsViewController()
     vc.bookDetails = mockBook
