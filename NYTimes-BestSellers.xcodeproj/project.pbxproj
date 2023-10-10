@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D806843C2AD4C45E003231BA /* BookDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D806843B2AD4C45E003231BA /* BookDetailsViewController.swift */; };
 		D8323FD8288DFD5C00D6DB63 /* BookCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8323FD7288DFD5C00D6DB63 /* BookCategory.swift */; };
 		D8387D7A288B50E900315EFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8387D79288B50E900315EFE /* AppDelegate.swift */; };
 		D8387D7C288B50E900315EFE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8387D7B288B50E900315EFE /* SceneDelegate.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D806843B2AD4C45E003231BA /* BookDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsViewController.swift; sourceTree = "<group>"; };
 		D8323FD7288DFD5C00D6DB63 /* BookCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCategory.swift; sourceTree = "<group>"; };
 		D8387D76288B50E900315EFE /* NYTimes-BestSellers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NYTimes-BestSellers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8387D79288B50E900315EFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +51,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D80684382AD4B2EA003231BA /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D84B1EB4288B62D60020D2FB /* BookListTableViewCell.swift */,
+				D88AD778288CEF3700155E8F /* BookCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		D8387D6D288B50E900315EFE = {
 			isa = PBXGroup;
 			children = (
@@ -94,9 +105,9 @@
 		D84B1EB0288B62010020D2FB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D80684382AD4B2EA003231BA /* Cells */,
 				D8387D7D288B50E900315EFE /* ViewController.swift */,
-				D84B1EB4288B62D60020D2FB /* BookListTableViewCell.swift */,
-				D88AD778288CEF3700155E8F /* BookCollectionViewCell.swift */,
+				D806843B2AD4C45E003231BA /* BookDetailsViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -182,6 +193,7 @@
 			files = (
 				D8387D7E288B50E900315EFE /* ViewController.swift in Sources */,
 				D8387D7A288B50E900315EFE /* AppDelegate.swift in Sources */,
+				D806843C2AD4C45E003231BA /* BookDetailsViewController.swift in Sources */,
 				D88AD779288CEF3700155E8F /* BookCollectionViewCell.swift in Sources */,
 				D84B1EAD288B585A0020D2FB /* BookListResults.swift in Sources */,
 				D8387D7C288B50E900315EFE /* SceneDelegate.swift in Sources */,
@@ -343,6 +355,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -371,6 +384,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
