@@ -15,18 +15,19 @@ class BookDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(containerStackView)
-        view.addSubview(bookCoverImageView)
+        addScrollView()
+        addContentView()
+        contentView.addSubview(bookCoverImageView)
+        contentView.addSubview(containerStackView)
         containerStackView.addArrangedSubview(titleLabel)
         containerStackView.addArrangedSubview(authorLabel)
         containerStackView.addArrangedSubview(descriptionLabel)
 
         NSLayoutConstraint.activate([
-        bookCoverImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        bookCoverImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-        containerStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        containerStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-        containerStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+        bookCoverImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+        bookCoverImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+        containerStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+        containerStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
         containerStackView.topAnchor.constraint(equalTo: bookCoverImageView.bottomAnchor, constant: 20),
         ])
         loadImage(bookImageURL)
@@ -36,6 +37,41 @@ class BookDetailsViewController: UIViewController {
     }
     
     // MARK: - Views
+    
+    var scrollView = UIScrollView()
+    var contentView = UIView()
+    
+    func addScrollView() {
+        view.addSubview(scrollView)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        let safeArea = view.safeAreaLayoutGuide
+        NSLayoutConstraint.activate([
+            scrollView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            scrollView.widthAnchor.constraint(equalTo: safeArea.widthAnchor),
+            scrollView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        scrollView.contentInset.bottom = view.safeAreaInsets.bottom
+    }
+    
+    func addContentView() {
+        scrollView.addSubview(contentView)
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        let safeArea = view.safeAreaLayoutGuide
+        NSLayoutConstraint.activate([
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.widthAnchor.constraint(equalTo: view.widthAnchor)
+        ])
+        
+        let heightConstraints = contentView.heightAnchor.constraint(equalTo: safeArea.heightAnchor)
+        heightConstraints.priority = UILayoutPriority(250)
+        heightConstraints.isActive = true
+    }
+    
     var bookCoverImageView: UIImageView = {
             let imageView = UIImageView()
             imageView.translatesAutoresizingMaskIntoConstraints = false
