@@ -15,23 +15,61 @@ class BookDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(titleLabel)
+        view.addSubview(containerStackView)
+        containerStackView.addArrangedSubview(bookCoverImageView)
+        containerStackView.addArrangedSubview(titleLabel)
+        containerStackView.addArrangedSubview(authorLabel)
+        containerStackView.addArrangedSubview(descriptionLabel)
+
         NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            containerStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            containerStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
         titleLabel.text = bookTitle
-        /*
-         Optional(NYTimes_BestSellers.Book(author: "ONE and Yusuke Murata", bookImage: "https://storage.googleapis.com/du-prd/books/images/9781421590158.jpg", description: "Saitama sneaks into a combat tournament in order to hone his martial arts skills.", title: "ONE-PUNCH MAN, VOL. 10", bookImageHeight: 495, bookImageWidth: 330))
-         */
+        authorLabel.text = bookAuthor
+        descriptionLabel.text = bookDescription
     }
     
     // MARK: - Views
+    var bookCoverImageView: UIImageView = {
+            let imageView = UIImageView()
+            imageView.image = UIImage(systemName: "pencil")
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
+            imageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            imageView.contentMode = .scaleAspectFit
+            return imageView
+        }()
+    
     var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.preferredFont(forTextStyle: .title1)
         return label
+    }()
+    
+    var authorLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.preferredFont(forTextStyle: .caption1)
+        return label
+    }()
+    
+    var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    var containerStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.distribution = .fill
+        stackView.alignment = .center
+        stackView.axis = .vertical
+        return stackView
     }()
     
     // MARK: - ViewModel
@@ -53,12 +91,9 @@ class BookDetailsViewController: UIViewController {
 
 #Preview {
     let mockBook = Book(
-        author: "Farhana",
-        bookImage: "",
-        description: "description",
-        title: "Farhana's Book",
-        bookImageHeight: 100,
-        bookImageWidth: 100
+        author: "ONE and Yusuke Murata",
+        bookImage: "https://storage.googleapis.com/du-prd/books/images/9781421590158.jpg",
+        description: "Saitama sneaks into a combat tournament in order to hone his martial arts skills.", title: "ONE-PUNCH MAN, VOL. 10", bookImageHeight: 495, bookImageWidth: 330
     )
     let vc = BookDetailsViewController()
     vc.bookDetails = mockBook
